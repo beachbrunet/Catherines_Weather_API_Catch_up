@@ -18,7 +18,7 @@ function displayWeather(data){
     };
 
 
-function apiCallsWeather(getCity){
+function apiCallsWeather(city){
     let getCity = this.getCity;
 }
 
