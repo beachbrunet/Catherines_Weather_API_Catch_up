@@ -17,7 +17,7 @@ function showWeather(data){
       var listEl = $("<li class='list-group-item'>").text(searchCities[i]);
       $("#search-city").append(listEl);
     };
-
+}
 // calls on the API depending on results
 function apiCallsWeather(city){
     
@@ -45,7 +45,6 @@ $.ajax({
             method: "GET"
           }).then(showWeatherData);
         }
-    }
 
 
 // Create container for weather to populate in
@@ -56,7 +55,7 @@ let containerEL =$("<div class='rows' id='5-day>");
 // Event listener
 $("#searchBtn").on("click", function(event){
     event.preventDefault();
-    city = $("#inputCity");
+    city = $("#inputCity").val();
     apiCallsWeather(city);
 });
 
