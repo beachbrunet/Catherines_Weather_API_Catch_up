@@ -27,14 +27,12 @@ function getForecast(data) {
       "&units=imperial&exclude=minutely,hourly&appid=" +
       API_KEY,
     method: "GET",
-  }).then(showForcast);
+  }).then(showForecast);
 }
 
 // Displays API Data -- shows 5 day forecast
 function showForecast(data) {
-  $("display-data").append(
-    $("<H2 id='forcast-header'>").text("Your 5 day Forcast")
-  );
+  $("main").append($("<H2 id='forcast-header'>").text("Your 5 day Forcast"));
   let containerEL = $("<div class='rows' id='5-day'>");
 }
 
@@ -68,7 +66,7 @@ function getCurrentWeather(city) {
 // Displays API Data -- shows CURRENT day forecast
 function showWeather(data) {
   getForecast(data);
-  $("display-data").append(
+  $("main").append(
     $("<H2 id='forcast-header'>").text(
       "Your Current Weather, or look out your window"
     )
@@ -82,6 +80,8 @@ $("#searchBtn").on("click", function (event) {
   var cityName = $("#inputCity").val();
   getCurrentWeather(cityName);
 });
+
+function display() {}
 
 // Calls API -- gets UV data
 // function getUVData () {
@@ -116,8 +116,8 @@ function showWeatherData(cityWeatherData) {
   dataEL.append($("<p>").text("UV index" + cityWeatherData.current.uvi));
 }
 
-// // Reset button
-// resetBtn.addEventListener("click", function() {
-//     window.localStorage.clear();
-//     window.location.reload();
-// })
+// Reset button - Works
+$("#reset").on("click", function () {
+  window.localStorage.clear();
+  window.location.reload();
+});
