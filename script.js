@@ -16,7 +16,7 @@ const queryURL =
 // console.log("cities" + searchedCity);
 // localStorage.setItem("storedCities", JSON.stringify(searchedCity));
 
-// Calls API --- gets 5 day forcast then shows it
+// Calls API --- gets 5 day forcast
 function getForecast(data) {
   $.ajax({
     url:
@@ -32,8 +32,19 @@ function getForecast(data) {
 
 // Displays API Data -- shows 5 day forecast
 function showForecast(data) {
+  console.log(data);
   $("main").append($("<H2 id='forcast-header'>").text("Your 5 day Forcast"));
-  let containerEL = $("<div class='rows' id='5-day'>");
+  for (day of data.list) {
+    forcastDay(day);
+  }
+}
+// Displays API Data -- shows CURRENT day forecast
+function forcastDay(data) {
+  let dataEl = $("main");
+  dataEl.append($("<h1 class='header'>").text(data.dt_txt));
+  dataEl.append($("<p>").text("Temperature " + data.main.temp));
+  dataEl.append($("<p>").text("Humidity " + data.main.humidity));
+  dataEl.append($("<p>").text("Wind Speed " + data.wind.speed));
 }
 
 // Calls API -- gets current weather
@@ -42,7 +53,7 @@ function getCurrentWeather(city) {
     url:
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
-      "&appid=" +
+      "&units=imperial&appid=" +
       API_KEY,
     method: "GET",
   })
@@ -66,22 +77,26 @@ function getCurrentWeather(city) {
 // Displays API Data -- shows CURRENT day forecast
 function showWeather(data) {
   getForecast(data);
-  $("main").append(
+  let dataEl = $("main");
+  dataEl.append(
     $("<H2 id='forcast-header'>").text(
       "Your Current Weather, or look out your window"
     )
   );
-  let containerEL = $("<div class='rows'>");
+  let currentDate = moment().format("MM/DD/YYYY");
+  dataEl.append($("<h1 class='header'>").text(currentDate));
+  dataEl.append($("<p>").text("Temperature " + data.main.temp));
+  dataEl.append($("<p>").text("Humidity " + data.main.humidity));
+  dataEl.append($("<p>").text("Wind Speed " + data.wind.speed));
 }
 
 // Event listener --to show stored search history
 $("#searchBtn").on("click", function (event) {
   event.preventDefault();
+  $("main").html("");
   var cityName = $("#inputCity").val();
   getCurrentWeather(cityName);
 });
-
-function display() {}
 
 // Calls API -- gets UV data
 // function getUVData () {
@@ -101,19 +116,9 @@ function display() {}
 // }
 
 // Create container for weather to populate in
+
 function showWeatherData(cityWeatherData) {
-  console.info(cityWeatherData);
-  let currentDate = moment().format("MM/DD/YYYY");
-  let dataEL = $("<div class='jumbotron' id='jumbotron'>");
-  dataEL.append(
-    $("<h1 class='header'>").text(cityWatherData + " " + currentDate)
-  );
-  dataEL.append($("<p>").text("Temperature" + cityWeatherData.current.temp));
-  dataEL.append($("<p>").text("Humidity" + cityWeatherData.current.humidity));
-  dataEL.append(
-    $("<p>").text("Wind Speed" + cityWeatherData.current.wind_speed)
-  );
-  dataEL.append($("<p>").text("UV index" + cityWeatherData.current.uvi));
+  //   dataEL.append($("<p>").text("UV index" + cityWeatherData.current.uvi));
 }
 
 // Reset button - Works

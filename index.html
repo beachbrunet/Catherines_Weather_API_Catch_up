@@ -8,31 +8,43 @@
     </head>
 
     <body>
-        
     <header>
     <title>Weather Dashboard </title> 
     </header>
 <!-- Enter city -->
-          <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-sm">Enter a city</span>
-            <input type="text" class="form-control" id = "inputCity" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-        <button id = "reset">Reset</button>  
-        </div>
- 
-<div class = "row">
-    <div class = "col">
-     <div class = "card-body">
-         <h2> Search a City </h2>
-<div class = text-left for left alignment>
-    <button class="btn btn-primary" id= "searchBtn" type="submit">Search</button>
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
       </div>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="search">
+        <div class="row">
+            <h1>Search for a City:</h1>
+            <form class="example" action="action_page.php">
+                <input type="text" placeholder="Search a City" name="search" id = "inputCity">
+            </form>
+                 </button>
+                 </div>
+                 <div class = text-left for left alignment>
+                    <button class="btn btn-primary" id= "searchBtn" type="submit">Search</button>
+                    <button class = "btn btn-primary" id= "resetBtn">Reset</button>  
+                 </div>
+                        <div class="col-two-container">
+                            <div class="forecast">
+                                  <div class='jumbotron' id='jumbotron'></div>
+                                </div>
+                                <section>
+                                  <h2 id = 'inputCity'></h2>
+                                 
     </div>
 </div>
 
-        <main class = "col-md-9 col-xl-10 pt-3"></main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- <script src="script.js"> </script>
+    <main class = "col-md-9 col-xl-10 pt-3"></main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script.js"> </script>
 </body>
-
 </hmtl>
